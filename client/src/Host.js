@@ -7,6 +7,7 @@ class Host extends Component {
     // init state
     this.state = {
       hostId: '...',
+      hostPeerConn: null,
     };
     // bind contexts
     this.setHostId = this.setHostId.bind(this);
@@ -14,6 +15,15 @@ class Host extends Component {
   }
 
   componentDidMount() {
+    // DEBUG: WebRTC testing !!
+    let servers = {'iceServers': [{'urls': 'stun:stun.services.mozilla.com'}, {'urls': 'stun:stun.l.google.com:19302'}, {'urls': 'turn:numb.viagenie.ca', 'credential': 'webrtc', 'username': 'cdmccauley@gmail.com'}]};
+    let tempHostPeerConn = new RTCPeerConnection(servers);
+    tempHostPeerConn.onicecandidate = (event => event.candidate ? console.log(event.candidate) : console.log(event));
+    console.log(tempHostPeerConn);
+    tempHostPeerConn.createOffer().then(offer => console.log(offer));
+    // tempHostPeerConn.createAnswer().then(answer => console.log(answer)); // need have-remote-offer or have-local-pranswer
+    // END DEBUG: WebRTC testing !!
+
     // set hostId
     this.setHostId();
   };

@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 // component imports
 import Host from './Host';
+import Room from './Room';
 
 // stateless component definitions
 const Header = () => <h1>Lawful Neutral</h1>;
@@ -31,11 +32,11 @@ const Join = (props) => (
   </React.Fragment>
 );
 
-const Room = (props) => (
-  <React.Fragment>
-    <h2>Room { props.match.params.id }</h2>
-  </React.Fragment>
-);
+// const Room = (props) => (
+//   <React.Fragment>
+//     <h2>Room { props.match.params.id }</h2>
+//   </React.Fragment>
+// );
 
 const footerStyle = {
   bottom: '1em',
